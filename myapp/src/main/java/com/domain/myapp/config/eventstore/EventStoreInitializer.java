@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.domain.myapp.monitoring.ApplicationHasStartedEvent;
+
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 
@@ -31,7 +33,7 @@ public class EventStoreInitializer {
 		JournalStorage journalStorage = new H2JournalStorage(dataSource);
 		ActorRef eventStore = actorSystem.actorOf(EventStore.mkProps(journalStorage), "eventStore");
 		log.info("Started EventStore {}", eventStore);
-		eventStore.tell("startping", null);
+		eventStore.tell(new ApplicationHasStartedEvent(), null);
 		return eventStore;
 	}
 }

@@ -36,9 +36,14 @@ public class MonitoringController {
 	@Resource(name = "eventStore")
 	private ActorRef eventStore;
 	
+	@Resource(name = "applicationStatusProjection")
+	private ActorRef applicationStatusProjection;
+	
 	@RequestMapping(value = "/selfTest", method = RequestMethod.GET)
 	@ResponseBody
 	public String doSelfTest(HttpServletResponse response) {
+		log.info("Do self test");
+		
 		List<String> errors = new ArrayList<String>();
 		askEventStore(errors);
 		if (errors.size() == 0) {
@@ -52,6 +57,13 @@ public class MonitoringController {
 			}
 			return null;
 		}
+	}
+	
+	@RequestMapping(value = "/applicationStatus", method = RequestMethod.GET)
+	@ResponseBody
+	public ApplicationStatus getApplicationStatus() {
+		log.info("Get application status");
+		return ApplicationStatusProjection.askApplicationStatus(applicationStatusProjection);
 	}
 	
 	private void askEventStore(List<String> errors) {

@@ -8,6 +8,10 @@
             return $http.get('../services/monitoring/selfTest');
         };
 
+        service.getApplicationStatus = function(){
+            return $http.get('../services/monitoring/applicationStatus');
+        };
+
         return service;
     };
 

@@ -15,6 +15,8 @@ import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
 
+import com.domain.myapp.monitoring.ApplicationStatusProjection;
+
 @Configuration
 public class ProjectionManagerInitializer {
 
@@ -31,7 +33,7 @@ public class ProjectionManagerInitializer {
 	public ActorRef initializeProjectionManager() {
 		List<Props> props = new ArrayList<Props>();
 
-		//props.add(MaterialeProjection.mkProps(eventStore));
+		props.add(ApplicationStatusProjection.mkProps(eventStore));
 		
 		return actorSystem.actorOf(ProjectionManager.mkProps(projectionErrorListener, props), "ProjectionManager");
 	}

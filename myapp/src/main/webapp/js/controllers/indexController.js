@@ -9,7 +9,15 @@
     			});
     	};
     	
+    	var getApplicationStatus = function() {
+    		monitoringService.getApplicationStatus()
+    			.success(function(data){
+    				$scope.applicationStatus = data;
+    			});
+    	};    	
+    	
     	doSelfTest();
+    	getApplicationStatus();
     };
 
     angular.module("exampleModule").controller("indexController", indexController);
