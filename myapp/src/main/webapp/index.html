@@ -1,9 +1,20 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>maven-archetype-eventsourcing</title>
+  <title>maven-archetype-eventsourcing</title>
+  <script type="text/javascript" src="/plugins/angular.min-1.2.18.js"></script>
+  
+  <script type="text/javascript" src="/js/app.js"></script>
+  <script type="text/javascript" src="/js/services/monitoringService.js"></script>
+  
+  <script type="text/javascript" src="/js/controllers/indexController.js"></script>
+  
 </head>
-  <body>
-    <h1>Welcome</h1>
+  <body ng-app="exampleModule">
+  
+    <div ng-controller="indexController">
+      <h1>Welcome</h1>
+      <p>Server status: {{serverStatus}}</p>
+    </div>
   </body>
 </html>
