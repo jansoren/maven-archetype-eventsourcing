@@ -13,24 +13,16 @@ import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 @Configuration
 public class DataSourceInitializer {
 
-	private SimpleDriverDataSource dataSource;
-	
-	public DataSourceInitializer() {
-		initializeDataSource();
-	}
-	
-	private void initializeDataSource() {
-		dataSource = createDataSource();
-		DatabasePopulatorUtils.execute(createDatabasePopulator(), dataSource);		
-	}
-
 	@Bean(name = "dataSource")
 	public DataSource getDataSource(){
+		DataSource dataSource = createDataSource();
+		DatabasePopulatorUtils.execute(createDatabasePopulator(), dataSource);
 		return dataSource;
 	}
 	
 	private DatabasePopulator createDatabasePopulator() {
 		ResourceDatabasePopulator databasePopulator = new ResourceDatabasePopulator();
+		databasePopulator.setContinueOnError(true);
 		databasePopulator.addScript(new ClassPathResource("schema.sql"));
 		return databasePopulator;
 	}

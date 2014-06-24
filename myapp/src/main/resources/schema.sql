@@ -1,8 +1,4 @@
-drop sequence if exists seq;
-drop table if exists Event;
-drop table if exists Saga;
-
-create sequence seq;
+create SEQUENCE seq;
 
 create table Event(
 	id number primary key,
