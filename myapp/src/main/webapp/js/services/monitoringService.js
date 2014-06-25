@@ -1,14 +1,14 @@
-(function(){
+(function () {
 
-    var monitoringService = function($http){
+    var monitoringService = function ($http) {
 
         var service = {};
 
-        service.doSelfTest = function(){
+        service.doSelfTest = function () {
             return $http.get('../services/monitoring/selfTest');
         };
 
-        service.getApplicationStatus = function(){
+        service.getApplicationStatus = function () {
             return $http.get('../services/monitoring/applicationStatus');
         };
 

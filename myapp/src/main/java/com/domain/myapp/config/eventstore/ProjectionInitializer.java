@@ -21,21 +21,21 @@ import com.domain.myapp.util.Timeout;
 @Configuration
 public class ProjectionInitializer {
 
-	@Resource(name="projectionManager")
-	private ActorRef projectionManager;
+    @Resource(name = "projectionManager")
+    private ActorRef projectionManager;
 
 
-	@Bean(name="applicationStatusProjection")
-	public ActorRef getApplicationStatusProjectionRef() {
-		return askProjectionRef(ApplicationStatusProjection.class);
-	}
+    @Bean(name = "applicationStatusProjection")
+    public ActorRef getApplicationStatusProjectionRef() {
+        return askProjectionRef(ApplicationStatusProjection.class);
+    }
 
-	private ActorRef askProjectionRef(Class<? extends Projection> projectionClass) {
-		Future<Object> getProjection = ask(projectionManager, call("getProjectionRef", projectionClass), Timeout.THREE_SECONDS);
-		try {
-			return (ActorRef) Await.result(getProjection, Duration.create(Timeout.THREE_SECONDS_STR));
-		} catch (Exception e) {
-			throw new RuntimeException("Error retrieving projection reference", e);
-		}
-	}
+    private ActorRef askProjectionRef(Class<? extends Projection> projectionClass) {
+        Future<Object> getProjection = ask(projectionManager, call("getProjectionRef", projectionClass), Timeout.THREE_SECONDS);
+        try {
+            return (ActorRef) Await.result(getProjection, Duration.create(Timeout.THREE_SECONDS_STR));
+        } catch (Exception e) {
+            throw new RuntimeException("Error retrieving projection reference", e);
+        }
+    }
 }
