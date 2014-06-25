@@ -33,23 +33,41 @@
         <include>**/*.java</include>
       </includes>
     </fileSet>
-    <fileSet encoding="UTF-8">
-      <directory>.settings</directory>
+    <fileSet filtered="true" encoding="UTF-8">
+      <directory>.idea</directory>
       <includes>
-        <include>**/*.prefs</include>
+        <include>**/*.xml</include>
       </includes>
     </fileSet>
     <fileSet filtered="true" encoding="UTF-8">
-      <directory></directory>
+      <directory>.idea/copyright</directory>
       <includes>
-        <include>.classpath</include>
-        <include>.project</include>
+        <include>**/*.xml</include>
+      </includes>
+    </fileSet>
+    <fileSet filtered="true" encoding="UTF-8">
+      <directory>.idea/scopes</directory>
+      <includes>
+        <include>**/*.xml</include>
+      </includes>
+    </fileSet>
+    <fileSet filtered="true" encoding="UTF-8">
+      <directory>.idea/libraries</directory>
+      <includes>
+        <include>**/*.xml</include>
+      </includes>
+    </fileSet>
+    <fileSet encoding="UTF-8">
+      <directory>.idea</directory>
+      <includes>
+        <include>**/*.name</include>
       </includes>
     </fileSet>
     <fileSet encoding="UTF-8">
       <directory></directory>
       <includes>
         <include>.gitignore</include>
+        <include>myapp.iml</include>
       </includes>
     </fileSet>
   </fileSets>

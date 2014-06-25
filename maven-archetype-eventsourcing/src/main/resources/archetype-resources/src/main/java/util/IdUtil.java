@@ -6,7 +6,7 @@ package ${package}.util;
 import java.util.UUID;
 
 public class IdUtil {
-	public static String createUUID() {
-		return UUID.randomUUID().toString();
-	}
+    public static String createUUID() {
+        return UUID.randomUUID().toString();
+    }
 }

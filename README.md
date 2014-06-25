@@ -18,3 +18,8 @@ You can also test the result of the archetype:
 2. Run `mvn clean install`
 3. Run `mvn jetty:run` to start application
 4. Open url `http://localhost:8080`
+
+### Create a Maven Archetype from an existing project
+
+1. Enter project folder and run `mvn archetype:create-from-project`
+2. You will find your generated archetype code in `target/generated-sources/archetype` folder

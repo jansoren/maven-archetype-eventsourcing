@@ -17,28 +17,28 @@ import akka.actor.UntypedActor;
 
 import ${package}.util.Timeout;
 
-public class ProjectionErrorListener extends UntypedActor{
+public class ProjectionErrorListener extends UntypedActor {
 
     private static final int ERRORS_SIZE = 100;
-	private List<ProjectionError> errors = new ArrayList<>();
+    private List<ProjectionError> errors = new ArrayList<>();
 
     public ProjectionErrorListener() {
     }
 
     @Override
     public void onReceive(Object o) {
-        if(o instanceof ProjectionFailedError){
-            if(errors.size() < ERRORS_SIZE){
-            	errors.add(new ProjectionError((ProjectionFailedError) o));
+        if (o instanceof ProjectionFailedError) {
+            if (errors.size() < ERRORS_SIZE) {
+                errors.add(new ProjectionError((ProjectionFailedError) o));
             }
-        } else if("getErrors".equals(o)){
+        } else if ("getErrors".equals(o)) {
             sender().tell(errors, self());
         }
     }
 
     @SuppressWarnings("unchecked")
-	public static List<ProjectionError> askErrors(ActorRef projectionErrorListener) {
-    	Future<Object> errors = ask(projectionErrorListener, "getErrors", Timeout.THREE_SECONDS);
+    public static List<ProjectionError> askErrors(ActorRef projectionErrorListener) {
+        Future<Object> errors = ask(projectionErrorListener, "getErrors", Timeout.THREE_SECONDS);
         try {
             return (List<ProjectionError>) Await.result(errors, Duration.create(Timeout.THREE_SECONDS_STR));
         } catch (Exception e) {
