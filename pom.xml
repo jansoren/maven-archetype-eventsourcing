@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>no.bouvet</groupId>
     <artifactId>maven-archetype-eventsourcing-parent</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>Eventsourcing archetype Parent</name>
-    <description></description>
+    <description />
     <url>https://github.com/bouvet-openlab/maven-archetype-eventsourcing</url>
     <modules>
         <module>maven-archetype-eventsourcing</module>
@@ -22,7 +21,7 @@
         <url>https://github.com/bouvet-openlab/maven-archetype-eventsourcing.git</url>
         <connection>scm:git:https://github.com/bouvet-openlab/maven-archetype-eventsourcing.git</connection>
         <developerConnection>scm:git:https://github.com/bouvet-openlab/maven-archetype-eventsourcing.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>v1.0.0</tag>
     </scm>
     <issueManagement>
         <system>github</system>
