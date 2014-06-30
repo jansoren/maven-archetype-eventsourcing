@@ -17,24 +17,24 @@ import akka.actor.ActorSystem;
 @Configuration
 public class SagaManagerInitializer {
 
-	private static final String PACKAGE_SCAN_PATH = "com.domain.myapp";
+    private static final String PACKAGE_SCAN_PATH = "com.domain.myapp";
 
-	@Resource(name="commandDispatcher")
-	private ActorRef commandDispatcher;
+    @Resource(name = "commandDispatcher")
+    private ActorRef commandDispatcher;
 
-	@Resource(name="eventStore")
-	private ActorRef eventStore;
+    @Resource(name = "eventStore")
+    private ActorRef eventStore;
 
-	@Autowired
-	private ActorSystem actorSystem;
+    @Autowired
+    private ActorSystem actorSystem;
 
-	@Bean(name="sagaManager")
-	public ActorRef getSagaManager(SagaRepository repository){
-		return actorSystem.actorOf(SagaManager.mkProps(commandDispatcher, repository, eventStore, PACKAGE_SCAN_PATH), "sagaManager");
-	}
+    @Bean(name = "sagaManager")
+    public ActorRef getSagaManager(SagaRepository repository) {
+        return actorSystem.actorOf(SagaManager.mkProps(commandDispatcher, repository, eventStore, PACKAGE_SCAN_PATH), "sagaManager");
+    }
 
-	@Bean
-	public SagaRepository getSagaRepository(DataSource datasource){
-		return new SagaDatasourceRepository(datasource);
-	}
+    @Bean
+    public SagaRepository getSagaRepository(DataSource datasource) {
+        return new SagaDatasourceRepository(datasource);
+    }
 }

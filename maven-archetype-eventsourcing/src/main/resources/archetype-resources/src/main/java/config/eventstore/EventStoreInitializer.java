@@ -23,20 +23,20 @@ import akka.actor.ActorSystem;
 @Configuration
 public class EventStoreInitializer {
 
-	private static Logger log = LoggerFactory.getLogger(EventStoreInitializer.class);
+    private static Logger log = LoggerFactory.getLogger(EventStoreInitializer.class);
 
-	@Autowired
-	private DataSource dataSource;
-	
-	@Autowired
-	private ActorSystem actorSystem;
+    @Autowired
+    private DataSource dataSource;
 
-	@Bean(name="eventStore")
-	public ActorRef initializeEventStore() {
-		JournalStorage journalStorage = new H2JournalStorage(dataSource);
-		ActorRef eventStore = actorSystem.actorOf(EventStore.mkProps(journalStorage), "eventStore");
-		log.info("Started EventStore {}", eventStore);
-		eventStore.tell(new ApplicationHasStartedEvent(), null);
-		return eventStore;
-	}
+    @Autowired
+    private ActorSystem actorSystem;
+
+    @Bean(name = "eventStore")
+    public ActorRef initializeEventStore() {
+        JournalStorage journalStorage = new H2JournalStorage(dataSource);
+        ActorRef eventStore = actorSystem.actorOf(EventStore.mkProps(journalStorage), "eventStore");
+        log.info("Started EventStore {}", eventStore);
+        eventStore.tell(new ApplicationHasStartedEvent(), null);
+        return eventStore;
+    }
 }

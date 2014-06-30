@@ -15,24 +15,24 @@ import akka.actor.Props;
 @Configuration
 public class ActorSystemInitializer {
 
-	private ActorSystem actorSystem;
+    private ActorSystem actorSystem;
 
-	public ActorSystemInitializer() {
-		initializeActorSystem();
-	}
+    public ActorSystemInitializer() {
+        initializeActorSystem();
+    }
 
-	private void initializeActorSystem() {
-		actorSystem = ActorSystem.create("example");
-		actorSystem.actorOf(Props.create(DeadLetterLogger.class));
-	}
+    private void initializeActorSystem() {
+        actorSystem = ActorSystem.create("example");
+        actorSystem.actorOf(Props.create(DeadLetterLogger.class));
+    }
 
-	@Bean
-	public ActorSystem getActorSystem(){
-		return actorSystem;
-	}
+    @Bean
+    public ActorSystem getActorSystem() {
+        return actorSystem;
+    }
 
-	@Bean(name = "projectionErrorListener")
-	public ActorRef getProjectionErrorListener(){
-		return actorSystem.actorOf(Props.create(ProjectionErrorListener.class), "projectionErrorListener");
-	}
+    @Bean(name = "projectionErrorListener")
+    public ActorRef getProjectionErrorListener() {
+        return actorSystem.actorOf(Props.create(ProjectionErrorListener.class), "projectionErrorListener");
+    }
 }

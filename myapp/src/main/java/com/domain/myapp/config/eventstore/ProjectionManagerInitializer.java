@@ -20,21 +20,21 @@ import com.domain.myapp.monitoring.ApplicationStatusProjection;
 @Configuration
 public class ProjectionManagerInitializer {
 
-	@Resource(name="eventStore")
-	private ActorRef eventStore;
+    @Resource(name = "eventStore")
+    private ActorRef eventStore;
 
-	@Autowired
-	private ActorSystem actorSystem;
+    @Autowired
+    private ActorSystem actorSystem;
 
-	@Resource(name = "projectionErrorListener")
-	private ActorRef projectionErrorListener;
+    @Resource(name = "projectionErrorListener")
+    private ActorRef projectionErrorListener;
 
-	@Bean(name="projectionManager")
-	public ActorRef initializeProjectionManager() {
-		List<Props> props = new ArrayList<Props>();
+    @Bean(name = "projectionManager")
+    public ActorRef initializeProjectionManager() {
+        List<Props> props = new ArrayList<Props>();
 
-		props.add(ApplicationStatusProjection.mkProps(eventStore));
-		
-		return actorSystem.actorOf(ProjectionManager.mkProps(projectionErrorListener, props), "ProjectionManager");
-	}
+        props.add(ApplicationStatusProjection.mkProps(eventStore));
+
+        return actorSystem.actorOf(ProjectionManager.mkProps(projectionErrorListener, props), "ProjectionManager");
+    }
 }

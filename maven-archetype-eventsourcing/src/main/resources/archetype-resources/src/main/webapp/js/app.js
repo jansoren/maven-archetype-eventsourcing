@@ -1,4 +1,4 @@
-(function(){
-   angular.module('exampleModule', []);
+(function () {
+    angular.module('exampleModule', []);
 }());
 

@@ -18,17 +18,17 @@ import akka.actor.Props;
 @Configuration
 public class CommandDispatcherInitializer {
 
-	@Resource(name="eventStore")
-	private ActorRef eventStore;
-	@Autowired
-	private ActorSystem actorSystem;
+    @Resource(name = "eventStore")
+    private ActorRef eventStore;
+    @Autowired
+    private ActorSystem actorSystem;
 
-	@Bean(name="commandDispatcher")
-	public ActorRef getCommandDispatcherRef(){
-		List<Props> props = new ArrayList<Props>();
+    @Bean(name = "commandDispatcher")
+    public ActorRef getCommandDispatcherRef() {
+        List<Props> props = new ArrayList<Props>();
 
-		//props.add(SendAvviksmeldingCommandHandler.mkProps(eventStore, tittelregisterProjection, javaMailSender, konfigurasjonHandler));
-		
+        //props.add(CommandHandler.mkProps(eventStore, projection));
+
         return actorSystem.actorOf(CommandDispatcher.mkProps(props), "commandDispatcher");
-	}
+    }
 }

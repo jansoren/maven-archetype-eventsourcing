@@ -10,15 +10,15 @@ import com.domain.myapp.util.IdUtil;
 
 public class SystemTestKit extends TestKit {
 
-	protected static final ActorSystem actorSystem = ActorSystem.create("testSystem");
-	
-	public SystemTestKit() {
-		super(actorSystem);
-	}
+    protected static final ActorSystem actorSystem = ActorSystem.create("testSystem");
 
-	protected TestActorRef<ApplicationStatusProjection> createApplicationStatusProjection() {
-		TestActorRef<ApplicationStatusProjection> projection = TestActorRef.create(actorSystem, ApplicationStatusProjection.mkProps(testActor()), IdUtil.createUUID());
-		projection.tell(new CompleteSubscriptionRegistered(null), testActor());
-		return projection;
-	}
+    public SystemTestKit() {
+        super(actorSystem);
+    }
+
+    protected TestActorRef<ApplicationStatusProjection> createApplicationStatusProjection() {
+        TestActorRef<ApplicationStatusProjection> projection = TestActorRef.create(actorSystem, ApplicationStatusProjection.mkProps(testActor()), IdUtil.createUUID());
+        projection.tell(new CompleteSubscriptionRegistered(null), testActor());
+        return projection;
+    }
 }
