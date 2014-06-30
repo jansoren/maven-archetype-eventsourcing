@@ -6,6 +6,8 @@ This archetype creates a Java web application using technologies like:
  - [Spring 4](http://spring.io/)
  - [Eventstore2](https://github.com/ks-no/eventstore2)
 
+This repository also contains an event sourcing example project in folder `/myapp`.
+ 
 ### Usage 
 
 1. Create project using archetype
