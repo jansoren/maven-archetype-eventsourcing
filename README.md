@@ -1,10 +1,10 @@
 maven-archetype-eventsourcing
 =============================
 
-This archetype creates a java-web-application using technologies like:
- - Angularjs
- - Spring 4
- - Eventstore2
+This archetype creates a Java web application using technologies like:
+ - [Angularjs](https://angularjs.org/)
+ - [Spring 4](http://spring.io/)
+ - [Eventstore2](https://github.com/ks-no/eventstore2)
 
 ### Usage 
 
