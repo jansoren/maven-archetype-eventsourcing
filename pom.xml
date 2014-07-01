@@ -6,7 +6,7 @@
     <packaging>pom</packaging>
     <version>1.0.2-SNAPSHOT</version>
     <name>Eventsourcing archetype Parent</name>
-    <description />
+    <description>Parent project for eventsourcing archetype</description>
     <url>https://github.com/bouvet-openlab/maven-archetype-eventsourcing</url>
     <modules>
         <module>maven-archetype-eventsourcing</module>
