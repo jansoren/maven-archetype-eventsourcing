@@ -5,12 +5,13 @@ This archetype creates a Java web application using technologies like:
  - [Angularjs](https://angularjs.org/)
  - [Spring 4](http://spring.io/)
  - [Eventstore2](https://github.com/ks-no/eventstore2)
+ - [Jetty](http://www.eclipse.org/jetty/)
 
 This repository also contains an event sourcing example project in folder `/myapp`.
  
 ### Usage 
 
-1. Create project using archetype 
+1. Create project using maven-archetype-eventsourcing
 ```
 mvn archetype:generate \
  -DarchetypeGroupId=no.bouvet \
@@ -22,7 +23,7 @@ mvn archetype:generate \
 2. Enter folder e.g `/myapp`
 3. Run `mvn clean install`
 4. Run `mvn jetty:run` to start application
-5. Enter url `http://localhost:8080`
+5. Enter url `http://localhost:8080` and enjoy your new web application :)
  
 ### Get started developing the archetype
 
