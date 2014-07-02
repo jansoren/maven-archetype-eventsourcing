@@ -4,9 +4,9 @@
     <groupId>no.bouvet</groupId>
     <artifactId>maven-archetype-eventsourcing-parent</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.3-SNAPSHOT</version>
     <name>Eventsourcing archetype Parent</name>
-    <description />
+    <description>Parent project for eventsourcing archetype</description>
     <url>https://github.com/bouvet-openlab/maven-archetype-eventsourcing</url>
     <modules>
         <module>maven-archetype-eventsourcing</module>

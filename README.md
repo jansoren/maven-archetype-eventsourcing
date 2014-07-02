@@ -5,19 +5,25 @@ This archetype creates a Java web application using technologies like:
  - [Angularjs](https://angularjs.org/)
  - [Spring 4](http://spring.io/)
  - [Eventstore2](https://github.com/ks-no/eventstore2)
+ - [Jetty](http://www.eclipse.org/jetty/)
 
 This repository also contains an event sourcing example project in folder `/myapp`.
  
 ### Usage 
 
-1. Create project using archetype
+1. Create project using maven-archetype-eventsourcing
 ```
-mvn archetype:generate -DarchetypeGroupId=no.bouvet -DarchetypeArtifactId=maven-archetype-eventsourcing -DarchetypeVersion=1.0.0  -DgroupId=com.domain.myapp -DartifactId=myapp
+mvn archetype:generate \
+ -DarchetypeGroupId=no.bouvet \
+ -DarchetypeArtifactId=maven-archetype-eventsourcing \
+ -DarchetypeVersion=1.0.2 \
+ -DgroupId=com.domain.myapp \
+ -DartifactId=myapp
 ``` 
 2. Enter folder e.g `/myapp`
 3. Run `mvn clean install`
 4. Run `mvn jetty:run` to start application
-5. Enter url `http://localhost:8080`
+5. Enter url `http://localhost:8080` and enjoy your new web application :)
  
 ### Get started developing the archetype
 
@@ -25,7 +31,12 @@ mvn archetype:generate -DarchetypeGroupId=no.bouvet -DarchetypeArtifactId=maven-
 2. Enter folder `/maven-archetype-eventsourcing` and run `mvn clean install`
 3. Archetype is now created and to create projects with it run:
 ```
-mvn archetype:generate -DarchetypeGroupId=no.bouvet -DarchetypeArtifactId=maven-archetype-eventsourcing -DarchetypeVersion=1.0.1-SNAPSHOT  -DgroupId=com.domain.myapp -DartifactId=myapp
+mvn archetype:generate \
+ -DarchetypeGroupId=no.bouvet \
+ -DarchetypeArtifactId=maven-archetype-eventsourcing \
+ -DarchetypeVersion=1.0.3-SNAPSHOT \
+ -DgroupId=com.domain.myapp \ 
+ -DartifactId=myapp
 ```
 
 ### Create a Maven Archetype from an existing project
