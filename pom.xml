@@ -4,7 +4,7 @@
     <groupId>no.bouvet</groupId>
     <artifactId>maven-archetype-eventsourcing-parent</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.3-SNAPSHOT</version>
+    <version>1.0.3</version>
     <name>Eventsourcing archetype Parent</name>
     <description>Parent project for eventsourcing archetype</description>
     <url>https://github.com/bouvet-openlab/maven-archetype-eventsourcing</url>
@@ -21,7 +21,7 @@
         <url>https://github.com/bouvet-openlab/maven-archetype-eventsourcing.git</url>
         <connection>scm:git:https://github.com/bouvet-openlab/maven-archetype-eventsourcing.git</connection>
         <developerConnection>scm:git:https://github.com/bouvet-openlab/maven-archetype-eventsourcing.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>v1.0.3</tag>
     </scm>
     <issueManagement>
         <system>github</system>
