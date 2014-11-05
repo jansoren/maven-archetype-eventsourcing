@@ -6,6 +6,7 @@ This archetype creates a Java web application using technologies like:
  - [Spring 4](http://spring.io/)
  - [Eventstore2](https://github.com/ks-no/eventstore2)
  - [Jetty](http://www.eclipse.org/jetty/)
+ - [JsonClient](https://github.com/bouvet-openlab/java-json-client)
 
 This repository also contains an event sourcing example project in folder `/myapp`.
  
