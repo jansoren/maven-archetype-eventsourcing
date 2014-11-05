@@ -8,7 +8,6 @@ import ${package}.config.eventstore.Aggregate;
 import no.ks.eventstore2.Event;
 
 public class ApplicationHasStartedEvent extends Event {
-    private static final long serialVersionUID = 1L;
 
     @Override
     public String getAggregateType() {
