@@ -1,21 +1,13 @@
 package com.domain.myapp.monitoring;
 
-import static akka.pattern.Patterns.ask;
-import static no.ks.eventstore2.projection.CallProjection.call;
-
-import org.joda.time.DateTime;
-
-import no.ks.eventstore2.Handler;
-import no.ks.eventstore2.projection.Projection;
-import no.ks.eventstore2.projection.Subscriber;
-import scala.concurrent.Await;
-import scala.concurrent.Future;
-import scala.concurrent.duration.Duration;
 import akka.actor.ActorRef;
 import akka.actor.Props;
-
 import com.domain.myapp.config.eventstore.Aggregate;
-import com.domain.myapp.util.Timeout;
+import no.ks.eventstore2.Handler;
+import no.ks.eventstore2.ask.Asker;
+import no.ks.eventstore2.projection.Projection;
+import no.ks.eventstore2.projection.Subscriber;
+import org.joda.time.DateTime;
 
 @Subscriber(Aggregate.SYSTEM)
 public class ApplicationStatusProjection extends Projection {
@@ -42,9 +34,8 @@ public class ApplicationStatusProjection extends Projection {
     }
 
     public static ApplicationStatus askApplicationStatus(ActorRef applicationStatusProjection) {
-        Future<Object> askApplicationStatus = ask(applicationStatusProjection, call("getApplicationStatus"), Timeout.THREE_SECONDS);
         try {
-            return (ApplicationStatus) Await.result(askApplicationStatus, Duration.create(Timeout.THREE_SECONDS_STR));
+            return Asker.askProjection(applicationStatusProjection, "getApplicationStatus").single(ApplicationStatus.class);
         } catch (Exception e) {
             throw new RuntimeException("Could not retrieve application status", e);
         }
