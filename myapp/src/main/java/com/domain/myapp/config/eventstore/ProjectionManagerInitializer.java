@@ -1,21 +1,17 @@
 package com.domain.myapp.config.eventstore;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.annotation.Resource;
-
+import akka.actor.ActorRef;
+import akka.actor.ActorSystem;
+import akka.actor.Props;
+import com.domain.myapp.monitoring.ApplicationStatusProjection;
 import no.ks.eventstore2.projection.ProjectionManager;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import akka.actor.ActorRef;
-import akka.actor.ActorSystem;
-import akka.actor.Props;
-
-import com.domain.myapp.monitoring.ApplicationStatusProjection;
+import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
 
 @Configuration
 public class ProjectionManagerInitializer {
@@ -35,6 +31,6 @@ public class ProjectionManagerInitializer {
 
         props.add(ApplicationStatusProjection.mkProps(eventStore));
 
-        return actorSystem.actorOf(ProjectionManager.mkProps(projectionErrorListener, props), "ProjectionManager");
+        return actorSystem.actorOf(ProjectionManager.mkProps(projectionErrorListener, props), "projectionManager");
     }
 }

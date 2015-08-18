@@ -1,7 +1,9 @@
 package com.domain.myapp.config.eventstore;
 
+import com.typesafe.config.ConfigFactory;
 import no.ks.eventstore2.DeadLetterLogger;
 
+import no.ks.eventstore2.projection.ProjectionErrorListener;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -19,7 +21,7 @@ public class ActorSystemInitializer {
     }
 
     private void initializeActorSystem() {
-        actorSystem = ActorSystem.create("example");
+        actorSystem = ActorSystem.create("example-actorsystem", ConfigFactory.parseResources("classpath:/application.conf"));
         actorSystem.actorOf(Props.create(DeadLetterLogger.class));
     }
 

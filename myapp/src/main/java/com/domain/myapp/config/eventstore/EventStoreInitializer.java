@@ -1,26 +1,23 @@
 package com.domain.myapp.config.eventstore;
 
-import javax.sql.DataSource;
-
+import akka.actor.ActorRef;
+import akka.actor.ActorSystem;
+import com.domain.myapp.monitoring.ApplicationHasStartedEvent;
 import no.ks.eventstore2.eventstore.EventStore;
-import no.ks.eventstore2.eventstore.H2JournalStorage;
 import no.ks.eventstore2.eventstore.JournalStorage;
-
+import no.ks.eventstore2.eventstore.MysqlJournalStorage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.domain.myapp.monitoring.ApplicationHasStartedEvent;
-
-import akka.actor.ActorRef;
-import akka.actor.ActorSystem;
+import javax.sql.DataSource;
 
 @Configuration
 public class EventStoreInitializer {
 
-    private static Logger log = LoggerFactory.getLogger(EventStoreInitializer.class);
+    private static final Logger LOG = LoggerFactory.getLogger(EventStoreInitializer.class);
 
     @Autowired
     private DataSource dataSource;
@@ -30,9 +27,9 @@ public class EventStoreInitializer {
 
     @Bean(name = "eventStore")
     public ActorRef initializeEventStore() {
-        JournalStorage journalStorage = new H2JournalStorage(dataSource);
+        JournalStorage journalStorage = new MysqlJournalStorage(dataSource, new EventStoreClassRegistration());
         ActorRef eventStore = actorSystem.actorOf(EventStore.mkProps(journalStorage), "eventStore");
-        log.info("Started EventStore {}", eventStore);
+        LOG.info("Started EventStore {}", eventStore);
         eventStore.tell(new ApplicationHasStartedEvent(), null);
         return eventStore;
     }
